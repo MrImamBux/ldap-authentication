@@ -1,0 +1,15 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 daee0704
+dn: olcOverlay={0}accesslog
+objectClass: olcOverlayConfig
+objectClass: olcAccessLogConfig
+olcOverlay: {0}accesslog
+olcAccessLogDB: cn=accesslog
+olcAccessLogOps: all
+structuralObjectClass: olcAccessLogConfig
+entryUUID: ea6f6e69-8f46-4d76-9c36-38ffe9684975
+creatorsName: cn=config
+createTimestamp: 20180525092503Z
+entryCSN: 20180525092503.534605Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20180525092503Z

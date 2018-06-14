@@ -1,0 +1,16 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 ff5382f5
+dn: olcOverlay={2}auditlog
+objectClass: olcAuditlogConfig
+objectClass: olcOverlayConfig
+objectClass: olcConfig
+objectClass: top
+olcOverlay: {2}auditlog
+olcAuditlogFile: /usr/local/var/audit.ldif
+structuralObjectClass: olcAuditlogConfig
+entryUUID: c74e1708-19fe-4e58-8049-7a4c472c44f8
+creatorsName: cn=admin,cn=config
+createTimestamp: 20180525103946Z
+entryCSN: 20180525103946.688986Z#000000#000#000000
+modifiersName: cn=admin,cn=config
+modifyTimestamp: 20180525103946Z

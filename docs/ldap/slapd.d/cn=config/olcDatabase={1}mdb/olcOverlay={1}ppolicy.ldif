@@ -1,0 +1,17 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 e3f90694
+dn: olcOverlay={1}ppolicy
+objectClass: olcPPolicyConfig
+objectClass: olcOverlayConfig
+objectClass: olcConfig
+objectClass: top
+olcOverlay: {1}ppolicy
+olcPPolicyDefault: cn=Normal Policy,dc=root
+olcPPolicyHashCleartext: TRUE
+structuralObjectClass: olcPPolicyConfig
+entryUUID: e41562e6-f4d2-4d40-9633-788a114901eb
+creatorsName: cn=admin,cn=config
+createTimestamp: 20180525100154Z
+entryCSN: 20180525100154.627210Z#000000#000#000000
+modifiersName: cn=admin,cn=config
+modifyTimestamp: 20180525100154Z

@@ -1,0 +1,16 @@
+# AUTO-GENERATED FILE - DO NOT EDIT!! Use ldapmodify.
+# CRC32 acb4b3d5
+dn: olcOverlay={6}constraint
+objectClass: olcConstraintConfig
+objectClass: olcOverlayConfig
+objectClass: olcConfig
+objectClass: top
+olcOverlay: {6}constraint
+structuralObjectClass: olcConstraintConfig
+entryUUID: fac0dba1-b1e3-4645-b207-b952244b023a
+creatorsName: cn=admin,cn=config
+createTimestamp: 20180605112043Z
+olcConstraintAttribute: jpegPhoto size 131072
+entryCSN: 20180605113957.207137Z#000000#000#000000
+modifiersName: cn=admin,cn=config
+modifyTimestamp: 20180605113957Z
