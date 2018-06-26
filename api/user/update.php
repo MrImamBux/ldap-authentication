@@ -87,6 +87,5 @@ if($message) {
 		$message = "can not bind";
 }
 
-$result = array("message" => $message);
-
-echo json_encode($result);
+$$response = ["message" => $message];
+echo json_encode($response);

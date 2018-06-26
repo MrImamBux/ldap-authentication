@@ -8,6 +8,7 @@
 
 // JSON response
 header('Content-Type: application/json');
+$result = array();
 
 // If POST is empty but request method is POST -> get POST data from php://input
 if($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
@@ -48,6 +49,7 @@ else {
 		if($data) {
 				$result = ldap_get_entries($ldap_connection, $data);
 				$result = Utils::filterResult($result);
+				$message = "success";
 		} else
 			$message = "could not to get information";
 
@@ -55,7 +57,5 @@ else {
 		$message = "access denied";
 }
 
-if (empty($result))
-	$result = array("message" => $message);
-
-echo json_encode($result);
+$response = ["message" => $message, "data" => $result];
+echo json_encode($response);

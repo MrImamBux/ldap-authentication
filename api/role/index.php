@@ -8,6 +8,7 @@
 
 // JSON response
 header('Content-Type: application/json');
+$result = array();
 
 // load PHP class
 require_once ("../../shared/config/LDAP.php");
@@ -20,7 +21,7 @@ $ldap_connection = $ldap->getConnection();
 // Bind connection via admin because creating a user requires admin privileges
 if(ldap_bind($ldap_connection,"cn=admin,dc=root", "secret")) {
 	// Where the roles are in the directory
-	$role_base_dn = "cn=role,o=abc,dc=de,dc=root";
+	$role_base_dn = "cn=role,o=obcc,dc=de,dc=root";
 
 	$mail = $_GET["username"];
 	if ($mail) {
@@ -35,16 +36,15 @@ if(ldap_bind($ldap_connection,"cn=admin,dc=root", "secret")) {
 
 	$data = ldap_search($ldap_connection, $role_base_dn, $filter, $just_these);
 
-	if($data) {
 		$result = ldap_get_entries($ldap_connection, $data);
 		$result = Utils::filterResult($result);
-	} else
-		$message = "roles not available";
+		if($result)
+			$message = "success";
+		else
+			$message = "roles not available";
 
 } else
 	$message = "could not bind";
 
-if($message)
-	$result = array("message" => $message);
-
-echo json_encode($result);
+$response = ["message" => $message, "data" => $result];
+echo json_encode($response);

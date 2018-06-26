@@ -13,7 +13,7 @@ $mail = $_GET["username"];
 $role = $_GET["role"];
 
 if (empty($mail) or empty($role))
-	$message = "username and role required";
+	$message = "username, role required";
 else {
 	// Load PHP class
 	require_once ("../../shared/config/LDAP.php");
@@ -24,7 +24,7 @@ else {
 	$ldap_connection = $ldap->getConnection();
 
 	// Where the roles are in the directory
-	$role_base_dn = "cn=" . $role . ",cn=role,o=abc,dc=de,dc=root";
+	$role_base_dn = "cn=" . $role . ",cn=role,o=obcc,dc=de,dc=root";
 
 	// Which user to add in directory
 	$user_base_dn = "mail=" . $mail . ",ou=people,dc=root";
@@ -45,7 +45,5 @@ else {
 		$message = "access denied";
 }
 
-if (empty($result))
-	$result = array("message" => $message);
-
-echo json_encode($result);
+$response = ["message" => $message];
+echo json_encode($response);
