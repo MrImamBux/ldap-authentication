@@ -6,6 +6,10 @@
  * Time: 10:20
  */
 
+// Has configurations for server, database, application (everything)
+$config = include('config.php');
+$ldap_config = $config['ldap'];
+
 class LDAP {
     // Holds an instance of itself
     private static $instance;
@@ -20,43 +24,34 @@ class LDAP {
     // Holds LDAP connection
     private $connection;
 
-    /**
-     * The only method to create an instance of this LDAP. Yes! This class uses singleton pattern
-     * @param string $host
-     * @param int $port
-     * @param int $version
-     * @param bool $use_ssl
-     * @param bool $use_start_tls
-     * @return LDAP
-     */
-    public static function getInstance($host = "127.0.0.1", $port = 389, $version = 3, $use_ssl = false, $use_start_tls = false) {
-        if(!self::$instance) // if no instance then make one
-            self::$instance = new self($host, $port, $version, $use_ssl, $use_start_tls);
+    public static function getInstance() {
+		// if no instance then make one
+        if (!self::$instance) {
+            self::$instance = new self();
+		}
         return self::$instance;
     }
 
-    /**
-     * @param string $host
-     * @param int    $port
-     * @param int    $version
-     * @param boolean   $use_ssl
-     * @param boolean   $use_start_tls
-     */
-    private function __construct($host, $port, $version, $use_ssl, $use_start_tls) {
-        if (!extension_loaded('ldap'))
+    private function __construct() {
+        if (!extension_loaded('ldap')) {
             echo "Please enable LDAP extension on PHP.";
+		}
 
-        $this->host = $host;
-        $this->port = $port;
-        $this->version = $version;
-        $this->use_ssl = $use_ssl;
-        $this->use_start_tls = $use_start_tls;
+		global $ldap_config;
+        $this->use_ssl = $ldap_config['use_ssl'];
+		$this->host = $this->use_ssl ? 'ldaps://' : 'ldap://' . $ldap_config['host'];
+        $this->port = $this->use_ssl ? $ldap_config['ssl_port'] : $ldap_config['port'];
+        $this->version = $ldap_config['version'];
+        $this->use_start_tls = $ldap_config['$use_start_tls'];
+
         $this->connect();
     }
 
     public function __destruct() {
-        if($this->connection)
+    	// Clear connection from LDAP server
+        if ($this->connection) {
             $this->disconnect();
+		}
     }
 
     /**
@@ -64,15 +59,12 @@ class LDAP {
      */
     private function connect() {
         if (!$this->connection) {
-            $host = $this->host;
-            if ($this->use_ssl)
-                $host = 'ldaps://' . $host;
-
-            $this->connection = ldap_connect($host, $this->port);
+            $this->connection = ldap_connect($this->host, $this->port);
             ldap_set_option($this->connection, LDAP_OPT_PROTOCOL_VERSION, $this->version);
 
-            if ($this->use_start_tls)
+            if ($this->use_start_tls) {
                 ldap_start_tls($this->connection);
+			}
         }
     }
 

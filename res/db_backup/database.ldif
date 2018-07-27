@@ -1,0 +1,124 @@
+version: 1
+
+dn: dc=mymanaged,dc=host
+objectClass: organization
+objectClass: dcObject
+objectClass: top
+dc: mymanaged
+o: obcc.de
+
+dn: o=obcc,dc=mymanaged,dc=host
+objectClass: organization
+objectClass: top
+o: obcc
+
+dn: ou=people,dc=mymanaged,dc=host
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: cn=Normal Policy,dc=mymanaged,dc=host
+objectClass: pwdPolicy
+objectClass: device
+cn: Normal Policy
+pwdAttribute: userPassword
+pwdFailureCountInterval: 20
+pwdInHistory: 2
+
+dn: cn=role,o=obcc,dc=mymanaged,dc=host
+objectClass: top
+objectClass: organizationalRole
+cn: role
+
+dn: cn=cto,cn=role,o=obcc,dc=mymanaged,dc=host
+objectClass: top
+objectClass: groupOfNames
+cn: cto
+member: mail=harald.ziegler@obcc.de,ou=people,dc=mymanaged,dc=host
+
+dn: cn=manager,cn=role,o=obcc,dc=mymanaged,dc=host
+objectClass: top
+objectClass: groupOfNames
+cn: manager
+member: mail=sebastian.boss@obcc.de,ou=people,dc=mymanaged,dc=host
+
+dn: cn=developer,cn=role,o=obcc,dc=mymanaged,dc=host
+objectClass: top
+objectClass: groupOfNames
+cn: developer
+member: mail=imam.bux@obcc.de,ou=people,dc=mymanaged,dc=host
+member: mail=sebastian.boss@obcc.de,ou=people,dc=mymanaged,dc=host
+
+dn: cn=sales assistant,cn=role,o=obcc,dc=mymanaged,dc=host
+objectClass: top
+objectClass: groupOfNames
+cn: sales assistant
+member: mail=sabrina.kucha@obcc.de,ou=people,dc=mymanaged,dc=host
+
+dn: mail=imam.bux@obcc.de,ou=people,dc=mymanaged,dc=host
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Imam
+sn: Bux
+employeeType: 2
+mail: imam.bux@obcc.de
+mobile: 01776461323
+postalAddress: Wiesenmuehlenstrasse
+postalCode: 36037
+registeredAddress: Wiesenmuehlen strasse
+st: Wiesenmuehlen strasse
+uid: 203
+userPassword:: e1NTSEF9Q0tOUUNlZVJGTGVtSVR2STVvY3ludlFhbmE2elBURUU=
+
+dn: mail=walter.lorz@obcc.de,ou=people,dc=mymanaged,dc=host
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Walter
+sn: Lorz
+employeeType: 1
+mail: walter.lorz@obcc.de
+mobile: 0661280966
+uid: 101
+userPassword:: e1NTSEF9OVlqRVJXSUdoUk9nQVZJZVZEY0Y2WGgxbWt1T2JlTng=
+
+dn: mail=sabrina.kucha@obcc.de,ou=people,dc=mymanaged,dc=host
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: sabrina
+sn: kucha
+employeeType: 2
+mail: sabrina.kucha@obcc.de
+uid: 202
+userPassword:: e1NTSEF9V3JFcGJaS21XMWk3SzNpd0w4NStYbThKMDhXR2JpTEY=
+
+dn: mail=harald.ziegler@obcc.de,ou=people,dc=mymanaged,dc=host
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Harald
+sn: Ziegler
+employeeType: 1
+mail: harald.ziegler@obcc.de
+mobile: 0661280966
+uid: 102
+userPassword:: e1NTSEF9QnRmSmlTMnFBNUsveVlUZkxBOFpIYyswS0t4NWJnaWM=
+
+dn: mail=sebastian.boss@obcc.de,ou=people,dc=mymanaged,dc=host
+objectClass: inetOrgPerson
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: sebastian
+sn: boss
+employeeType: 2
+mail: sebastian.boss@obcc.de
+uid: 201
+userPassword:: e1NTSEF9dXhQWkl4V2FhUytuMUNuckxZZGJ0Zkgzb1pxQ205Uzg=
+
